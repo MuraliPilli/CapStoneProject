@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 700px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            grid-column: span 2;
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .form-left, .form-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="password"],
+        .form-container input[type="date"],
+        .form-container input[type="number"] {
+            width: 100%;
+            padding: 0.7rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-container input:focus {
+            border: 1px solid #6a11cb;
+            box-shadow: 0px 0px 8px rgba(106, 17, 203, 0.4);
+            outline: none;
+        }
+
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 8px;
+            background-color: #6a11cb;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            grid-column: span 2;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #531eaa;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.85rem;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+	<form action="registration"  th:object="${member}">
+    <div class="form-container">
+        <h1>Registration Form</h1>
+
+        <div class="form-left">
+            <input type="text" placeholder="Enter your name" id="name" th:field="*{name}" required>
+            <div class="error" id="nameError"></div>
+
+            <input type="text" placeholder="Enter your gender" id="gender" th:field="*{gender}" required>
+            <div class="error" id="genderError"></div>
+
+            <input type="date" placeholder="Enter your DOB" id="dob" th:field="*{dob}" required>
+            <div class="error" id="dobError"></div>
+
+            <input type="email" placeholder="Enter your email" id="email" th:field="*{email}"  required>
+            <div class="error" id="emailError"></div>
+
+            <input type="password" placeholder="Create password" id="password" th:field="*{password}"  required>
+            <div class="error" id="passwordError"></div>
+
+            <input type="number" placeholder="Enter your mobile number" id="mobile" th:field="*{mobile}"  required maxlength="10" minlength="10">
+            <div class="error" id="mobileError"></div>
+        </div>
+	<form action="registration" th:object="${address}">
+        <div class="form-right">
+            <input type="text" placeholder="Enter your street name" id="street" th:field="*{street}" required>
+            <div class="error" id="streetError"></div>
+
+            <input type="text" placeholder="Enter your city" id="city" th:field="*{city}" required>
+            <div class="error" id="cityError"></div>
+
+            <input type="text" placeholder="Enter your state" id="state" th:field="*{state}" required>
+            <div class="error" id="stateError"></div>
+
+            <input type="text" placeholder="Enter your country" id="country" th:field="*{country}" required>
+            <div class="error" id="countryError"></div>
+
+            <input type="number" placeholder="Enter your pincode" id="pincode" th:field="*{pincode}" required>
+            <div class="error" id="pincodeError"></div>
+        </div>
+		</form>
+        <input type="submit" value="Register">
+    </div>
+    </form>
+</body>
+</html>

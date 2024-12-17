@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Center the form on the page with a gradient background */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #333399, #ff66b2);
+            color: #fff;
+        }
+
+        /* Login form container styling */
+        .form-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+            color: #333;
+        }
+
+        /* Animation for form entrance */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        /* Styling for input fields */
+        .form-container input[type="text"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-container input:focus {
+            border: 1px solid #333399;
+            box-shadow: 0px 0px 8px rgba(51, 51, 153, 0.4);
+            outline: none;
+        }
+
+        /* Submit button styling */
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 8px;
+            background-color: #333399;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #4d4db2;
+        }
+        .error-message {
+			    color: red;
+			    font-weight: bold;
+			    margin-top: 1rem;
+			}
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Admin Login</h1>
+        <form id="loginForm" action="adminhome">
+            <input type="text" placeholder="Enter email address" id="email" name="email" required>
+            <input type="password" placeholder="Enter your password" id="password" name="password" required>
+            <input type="submit" value="Login">
+            <p>Forgot password : <a href="adminpasswordupdate">set password</a></p>
+            <p class="error-message" th:if="${msg}" th:text="${msg}" style="color: red;"></p>
+        </form>
+    </div>
+    
+
+   <!-- <script>
+        // Basic validation for email and password fields
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simple validation for demonstration
+            if (email === '' || password === '') {
+                alert('Please enter both email and password');
+            } else {
+                alert("Login successful!");
+                document.getElementById('loginForm').reset();
+            }
+        });
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f4f8fb, #e0ebf5);
+            color: #05070090;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .confirmation-container {
+            background: #1a658b1e;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+        }
+
+        .confirmation-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .order-details {
+            text-align: left;
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .order-details p {
+            font-size: 0.9rem;
+            margin: 0.2rem 0;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background: #007bff;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #565e64;
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <div class="confirmation-icon">✔</div>
+        <h1>Order Placed Successfully!</h1>
+        <p>Thank you for your order! Your items will be delivered soon.</p>
+
+        <!-- Order Details Section -->
+        <div class="order-details">
+            <h3>Order Summary</h3>
+            <p><strong>Order ID:</strong> <span th:text="${orderid}"></span></p>
+            <p><strong>Date:</strong><span th:text="${date}"></span></p>
+            <p><strong>Name:</strong> <span th:text="${drugName}"></p>
+            <p><strong>Total Amount:</strong> <span th:text="${drugPrice}"></p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions">
+            <a href="home" class="btn btn-primary">Continue Shopping</a>
+            <a href="orders" class="btn btn-secondary">View My Orders</a>
+        </div>
+    </div>
+</body>
+</html>
